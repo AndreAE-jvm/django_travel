@@ -1,0 +1,137 @@
+{% extends 'events/base.html' %}
+{% load static %}
+
+{% block title %}SmartTravel - Регистрация{% endblock %}
+
+
+<!-- стили для форм авторизации и регистрации -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+<link rel="stylesheet" href="{% static 'css/base_new.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-body">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10 col-xl-9 col-xxl-8">
+
+                {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible fade show"
+                     role="alert"
+                     style="margin-top: 10px;">
+                    <h5 class="alert-heading mb-3"><i class="bi bi-exclamation-triangle me-2"></i>Ошибки:</h5>
+
+                    <!-- вывод всех ошибок подряд -->
+                    {% for field in form %}
+                    {% for error in field.errors %}
+                    <div class="mb-2">{{ error }}</div>
+                    {% endfor %}
+                    {% endfor %}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+                </div>
+                {% endif %}
+                <div class="card auth-card mt-5 mb-5">
+                    <div class="card-header auth-header text-center text-white">
+                        <h4 class="mb-0"><i class="bi bi-person-plus me-2"></i>Создать аккаунт</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <form method="post" class="auth-form" action="{% url 'users:register' %}">
+                            {% csrf_token %}
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label"
+                                               for="{{ form.first_name.id_for_label }}">Имя</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                            {{ form.first_name }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label"
+                                               for="{{ form.last_name.id_for_label }}">Фамилия</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                            {{ form.last_name }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="{{ form.username.id_for_label }}">Имя
+                                    пользователя</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                                    {{ form.username }}
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="{{ form.email.id_for_label }}">Адрес электронной
+                                    почты</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                    {{ form.email }}
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label"
+                                               for="{{ form.password.id_for_label }}">Пароль</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                            {{ form.password1 }}
+                                        </div>
+                                        <div class="password-hint">
+                                            Минимум 4 символов
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="{{ form.password.id_for_label }}">Подтверждение
+                                            пароля</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                                            {{ form.password2 }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-4 mb-0">
+                                <button class="btn btn-primary btn-block w-100 py-2" type="submit">
+                                    <i class="bi bi-person-plus me-1"></i>Зарегистрироваться
+                                </button>
+                            </div>
+
+                            <!-- Согласие с условиями -->
+                            <div class="auth-agreement">
+                                <span class="fw-bold">Создавая аккаунт и/или нажимая кнопку "Зарегистрироваться", я соглашаюсь</span>
+                                <span class="fw-bold"> с </span>
+                                <a href="{% url 'terms' %}" target="_blank">Пользовательским соглашением</a>
+                                <span class="fw-bold"> и подтверждаю, что ознакомлен с </span>
+                                <a href="{% url 'privacy' %}" target="_blank">Политикой конфиденциальности</a>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="card-footer auth-footer text-center py-3">
+                        <div class="small">
+                            <a href="{% url 'users:login' %}" class="auth-link">
+                                <i class="bi bi-box-arrow-in-right me-1"></i>Уже есть аккаунт? Авторизоваться
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

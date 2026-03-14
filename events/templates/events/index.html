@@ -1,0 +1,276 @@
+{% extends 'events/base.html' %}
+{% load static %}
+
+
+{% block css %}
+<!-- Стили -->
+<link rel="stylesheet" href="{% static 'css/index_new.css' %}">
+<link rel="stylesheet" href="{% static 'css/base_new.css' %}">
+{% endblock %}
+
+
+{% block js %}
+<!-- Скрипт -->
+<script src="{% static 'js/index.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+<!--Page content    -->
+
+<!-- Центральная секция с поиском -->
+<section id="hero" class="hero-section py-3 mt-3">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <h1 class="display-4 fw-bold mb-3 text-center">
+                    Ваш помощник в мире путешествий
+                </h1>
+
+                <!-- Форма поиска -->
+                <form class="search-form home-intro__form" method="get" action="{% url 'events:index' %}">
+                    <!-- Вкладки поиска -->
+                    <div class="search-form__tabs">
+                        <div class="search-form__tab search-form__tab--active" data-tab="tours">
+                            Куда поедем?
+                        </div>
+                    </div>
+
+                    <!-- Поле поиска -->
+                    <div class="search-form__col search-form__col--desktop" data-id="tours">
+                        <input type="text"
+                               name="search"
+                               placeholder="Введите регион, место или тур"
+                               autocomplete="off"
+                               value="{{ request.GET.search }}"
+                               class="search-form-field__input search-form-field__input--desktop">
+                    </div>
+
+                    <!-- Даты -->
+                    <div class="search-form__col search-form__col--desktop" data-id="tours_activities">
+                        <input type="text"
+                               id="date-range"
+                               name="dates"
+                               placeholder="Даты"
+                               autocomplete="off"
+                               value="{{ request.GET.dates }}"
+                               class="search-form-field__input search-form-field__input--desktop date-picker">
+                        <input type="hidden" name="date_from" id="date_from" value="{{ request.GET.date_from }}">
+                        <input type="hidden" name="date_to" id="date_to" value="{{ request.GET.date_to }}">
+                    </div>
+
+                    <!-- Кнопка поиска -->
+                    <div class="search-form__button-col search-form__button-col--always-visible">
+                        <button type="submit" class="search-form__button as-button is-default is-x-large">
+            <span class="as-button__body">
+                <span class="as-button__prepend">
+                    <span class="search-form__button-icon">
+                        <i class="bi bi-search"></i>
+                    </span>
+                </span>
+                Начать путешествие
+            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Преимущества -->
+<section id="features" class="py-5">
+    <div class="container py-5">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="display-6 fw-bold mb-3">
+                    <span>Цифровые технологии</span>
+                    <span>для Вашего комфорта</span>
+                </h2>
+                <p class="text-muted">Мы объединяем лучшие экскурсии с технологиями будущего</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="bi bi-qr-code-scan fs-2 text-primary mb-3"></i>
+                        <h5 class="fw-bold mb-3">Единый QR-ключ</h5>
+                        <p class="text-muted mb-0">
+                            Бронируйте экскурсии, цифровые отели и получайте единый цифровой ключ для всего.
+                            Технологии встречаются с комфортом.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="bi bi-house-gear fs-2 text-success mb-3"></i>
+                        <h5 class="fw-bold mb-3">Цифровые отели</h5>
+                        <p class="text-muted mb-0">
+                            Отели с цифровым заселением, умным освещением и управляемыми услугами.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="bi bi-person-badge fs-2 text-warning mb-3"></i>
+                        <h6 class="fw-bold mb-3">Проверенные гиды</h6>
+                        <p class="text-muted mb-0">
+                            Только сертифицированные гиды с отличными отзывами и уникальными маршрутами.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="bi bi-shield-check fs-2 text-info mb-3"></i>
+                        <h5 class="fw-bold mb-3">Безопасная оплата</h5>
+                        <p class="text-muted mb-0">
+                            Бронируйте со 100% гарантией. Все платежи защищены и застрахованы. <br>
+                            После оплаты вы получите билет на электронную почту или телефон
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Как это работает -->
+<section id="how-it-works" class="py-5">
+    <div class="container py-5">
+        <h2 class="text-center display-6 fw-bold mb-5 pb-3">Как это работает?</h2>
+
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                         style="width: 60px; height: 60px;">
+                        <h4 class="mb-0">1</h4>
+                    </div>
+                    <h5 class="fw-bold">Выберите экскурсию</h5>
+                    <p class="text-muted mb-0">
+                        Найдите идеальную экскурсию в нашем каталоге с фильтрами по интересам, дате и цене.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                         style="width: 60px; height: 60px;">
+                        <h4 class="mb-0">2</h4>
+                    </div>
+                    <h5 class="fw-bold">Добавьте умный отель</h5>
+                    <p class="text-muted mb-0">
+                        Подберите отель с цифровым заселением и нужными услугами (сауна, сейф, кухня).
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="text-center">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                         style="width: 60px; height: 60px;">
+                        <h4 class="mb-0">3</h4>
+                    </div>
+                    <h5 class="fw-bold">Получите цифровой ключ</h5>
+                    <p class="text-muted mb-0">
+                        После оплаты вы получаете QR-код для доступа ко всем услугам в приложении.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Отзывы -->
+<section id="testimonials" class="py-5">
+    <div class="container py-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <h2 class="display-6 fw-bold mb-4">Что говорят наши клиенты</h2>
+            <p class="text-muted">Более 5000 туристов уже попробовали умные путешествия</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border-0 h-100">
+                    <div class="card-body">
+                        <div class="text-warning mb-3">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="fst-italic">"Очень удобный сервис, все в одном месте."</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg"
+                                 class="rounded-circle me-3" width="40" alt="">
+                            <div>
+                                <h6 class="mb-0">Андрей К.</h6>
+                                <small class="text-muted">Бизнес-путешественник</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 h-100">
+                    <div class="card-body">
+                        <div class="text-warning mb-3">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="fst-italic">"Цифровое заселение экономит время."</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg"
+                                 class="rounded-circle me-3" width="40" alt="">
+                            <div>
+                                <h6 class="mb-0">Мария С.</h6>
+                                <small class="text-muted">Профессиональный гид</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+            <div class="card border-0 h-100">
+                    <div class="card-body">
+                        <div class="text-warning mb-3">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </div>
+                        <p class="fst-italic">"Отлично для семейного отдыха."</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg"
+                                 class="rounded-circle me-3" width="40" alt="">
+                            <div>
+                                <h6 class="mb-0">Елена П.</h6>
+                                <small class="text-muted">Путешествует с семьёй</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

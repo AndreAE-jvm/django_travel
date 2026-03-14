@@ -1,0 +1,930 @@
+[
+{
+  "model": "events.eventcategory",
+  "pk": 1,
+  "fields": {
+    "name": "Тематические экскурсии",
+    "description": "Специализированные туры по определенным темам: гастрономические, исторические, мистические, литературные или архитектурные маршруты"
+  }
+},
+{
+  "model": "events.eventcategory",
+  "pk": 2,
+  "fields": {
+    "name": "Пешие походы",
+    "description": "Прогулки по историческим местам, архитектурным достопримечательностям и знаковым локациям города с гидом-экскурсоводом"
+  }
+},
+{
+  "model": "events.eventcategory",
+  "pk": 3,
+  "fields": {
+    "name": "Автобусные туры",
+    "description": "Комфортабельные поездки по городу и окрестностям с остановками у основных достопримечательностей, включая трансфер и услуги гида"
+  }
+},
+{
+  "model": "events.eventcategory",
+  "pk": 4,
+  "fields": {
+    "name": "Водные прогулки",
+    "description": "Экскурсии на катерах, лодках или теплоходах по рекам, каналам, озерам или морскому побережью"
+  }
+},
+{
+  "model": "events.eventcategory",
+  "pk": 5,
+  "fields": {
+    "name": "Загородные экскурсии",
+    "description": "Однодневные или многодневные туры за пределы города: природные заповедники, исторические усадьбы, монастыри и живописные места"
+  }
+},
+{
+  "model": "events.eventcategory",
+  "pk": 6,
+  "fields": {
+    "name": "Активный туризм",
+    "description": "Велосипедные, конные, скалолазные или пешие походы для любителей активного отдыха и приключений"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 2,
+  "fields": {
+    "name": "Исторический центр: от Кремля до Арбата",
+    "image": "events/main_XDJwvMm.webp",
+    "description": "Увлекательная пешая прогулка по самым знаковым местам исторического центра. Мы пройдем от Красной площади через старинные улочки до легендарного Арбата, узнаем тайны кремлевских стен и услышим истории о знаменитых жителях города.",
+    "short_description": "3-часовая прогулка по главным достопримечательностям",
+    "price": "1500.00",
+    "max_participants": 20,
+    "category": 2,
+    "location": "Москва, сбор у памятника Жукову",
+    "start_datetime": "2026-08-14T10:00:00Z",
+    "end_datetime": "2026-08-14T13:00:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 3,
+  "fields": {
+    "name": "Мистический Петербург: легенды и призраки",
+    "image": "events/main_DlPIkNn.jpg",
+    "description": "Вечерняя экскурсия по самым таинственным местам Северной столицы. Посетим дворы-колодцы, узнаем о призраках дворцов и услышим городские легенды, которые передаются из поколения в поколение.",
+    "short_description": "Ночная мистическая прогулка",
+    "price": "1800.00",
+    "max_participants": 15,
+    "category": 2,
+    "location": "Санкт-Петербург, Невский проспект, 28",
+    "start_datetime": "2026-08-02T20:00:00Z",
+    "end_datetime": "2026-08-02T23:00:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 4,
+  "fields": {
+    "name": "Золотая миля Ярославля",
+    "image": "events/main_wYobIYX.webp",
+    "description": "Прогулка по набережной Волги и исторической части города, включенной в список ЮНЕСКО. Увидим старинные храмы XVII века, купеческие особняки и места, связанные с основанием города.",
+    "short_description": "Обзорная экскурсия по объекту ЮНЕСКО",
+    "price": "1200.00",
+    "max_participants": 25,
+    "category": 2,
+    "location": "Ярославль, Стрелка рек Волги и Которосли",
+    "start_datetime": "2026-08-03T11:00:00Z",
+    "end_datetime": "2026-08-03T14:00:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 5,
+  "fields": {
+    "name": "Москва за один день: главные must-see",
+    "image": "events/Без_названия.webp",
+    "description": "Автобусный тур с остановками у всех ключевых достопримечательностей столицы. В программе: Воробьевы горы, Храм Христа Спасителя, Парк Победы, Москва-Сити, и конечно, Красная площадь с фотостопами.",
+    "short_description": "Обзорный тур по основным достопримечательностям",
+    "price": "2500.00",
+    "max_participants": 40,
+    "category": 3,
+    "location": "Москва, отель \"Метрополь\"",
+    "start_datetime": "2026-09-01T09:00:00Z",
+    "end_datetime": "2026-09-01T18:00:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 6,
+  "fields": {
+    "name": "Золотое кольцо: Сергиев Посад и Александров",
+    "image": "events/main_IS6U43M.webp",
+    "description": "Однодневный тур по двум древним городам. Посетим Троице-Сергиеву Лавру - духовный центр России, и Александровскую слободу - опричную столицу Ивана Грозного.",
+    "short_description": "Поездка по Золотому кольцу России",
+    "price": "3500.00",
+    "max_participants": 35,
+    "category": 3,
+    "location": "Москва, м. ВДНХ",
+    "start_datetime": "2026-09-02T07:00:00Z",
+    "end_datetime": "2026-09-02T13:30:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 7,
+  "fields": {
+    "name": "Пригороды Петербурга: Петергоф и Ораниенбаум",
+    "image": "events/main.webp",
+    "description": "Тур в летние резиденции русских императоров. Увидим знаменитые фонтаны Петергофа, прогуляемся по паркам и посетим дворец Петра III в Ораниенбауме.",
+    "short_description": "Дворцово-парковый тур",
+    "price": "2800.00",
+    "max_participants": 38,
+    "category": 3,
+    "location": "Санкт-Петербург, Дворцовая площадь",
+    "start_datetime": "2026-09-03T08:30:00Z",
+    "end_datetime": "2026-09-03T19:00:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 8,
+  "fields": {
+    "name": "Московские сырные истории",
+    "image": "events/main_dFyppHs.webp",
+    "description": "Гастрономический тур с дегустацией сыров и сырных блюд в исторических локациях. Посетим сырные лавки, рестораны с сырными дегустациями и узнаем историю сыроварения в России.",
+    "short_description": "Гастротур с дегустацией сыров",
+    "price": "3200.00",
+    "max_participants": 12,
+    "category": 1,
+    "location": "Москва, м. Китай-город",
+    "start_datetime": "2026-09-06T14:00:00Z",
+    "end_datetime": "2026-09-06T17:30:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 9,
+  "fields": {
+    "name": "Литературный Петербург: от Пушкина до Достоевского",
+    "image": "events/main_ftG69C6.webp",
+    "description": "Тур по местам, связанным с великими русскими писателями. Посетим дома-музеи, литературные кафе и места, описанные в классических произведениях.",
+    "short_description": "Литературно-историческая экскурсия",
+    "price": "1900.00",
+    "max_participants": 18,
+    "category": 1,
+    "location": "Санкт-Петербург, Английская набережная",
+    "start_datetime": "2026-10-07T12:00:00Z",
+    "end_datetime": "2026-10-07T15:30:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 10,
+  "fields": {
+    "name": "Архитектура модерна в Самаре",
+    "image": "events/main_zC4aWaI.webp",
+    "description": "Специализированная экскурсия по купеческим особнякам в стиле модерн. Увидим знаменитые дома Курлиной, Клодта, Субботиных-Шихобаловых и узнаем о самарском архитектурном ренессансе начала XX века.",
+    "short_description": "Архитектурный тур по стилю модерн",
+    "price": "1400.00",
+    "max_participants": 15,
+    "category": 1,
+    "location": "Самара, ул. Фрунзе, 159",
+    "start_datetime": "2026-09-08T15:00:00Z",
+    "end_datetime": "2026-09-08T18:00:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 11,
+  "fields": {
+    "name": "Ночной круиз с разводными мостами и джазом",
+    "image": "events/main_Ekvgj6K.webp",
+    "description": "Романтическая прогулка по рекам и каналам в самом сердце города. Под звуки живой джазовой музыки вы увидите, как разводят Дворцовый и Троицкий мосты. С борта теплохода открываются потрясающие виды ночной подсветки набережных.",
+    "short_description": "Увидеть легендарное зрелище разводных мостов",
+    "price": "2500.00",
+    "max_participants": 50,
+    "category": 4,
+    "location": "Санкт-Петербург, причал \"Сенатская пристань\"",
+    "start_datetime": "2026-09-05T20:30:00Z",
+    "end_datetime": "2026-09-05T23:15:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 12,
+  "fields": {
+    "name": "Сап-прогулка «Волжский рассвет» (Золотое кольцо)",
+    "image": "events/main_XUFdf2I.jpg",
+    "description": "Встретьте рассвет на воде! Спокойная прогулка на сап-досках по реке Волге в черте старинного русского города. С воды открывается уникальный вид на монастыри, купола церквей и купеческие особняки. Инструктор научит основам управления доской даже новичков.",
+    "short_description": "Взглянуть на архитектуру Золотого кольца с необычного ракурса",
+    "price": "1800.00",
+    "max_participants": 8,
+    "category": 4,
+    "location": "Ярославль, Стрелка (место слияния Волги и Которосли)",
+    "start_datetime": "2026-08-10T03:30:00Z",
+    "end_datetime": "2026-08-10T05:30:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 13,
+  "fields": {
+    "name": "Морской поход к фортам Кронштадта",
+    "image": "events/main_yCfUKsn.jpg",
+    "description": "Путешествие на скоростном катере по акватории Финского залива. Вы увидите легендарные форты «Кроншлот», «Император Александр I» и «Константин» с воды. Экскурсовод расскажет о морской славе России, защитниках города и тайнах залива.",
+    "short_description": "Обзор мощных фортификаций с воды и история морских побед.",
+    "price": "3200.00",
+    "max_participants": 12,
+    "category": 4,
+    "location": "Кронштадт, Летняя пристань (Петровский парк)",
+    "start_datetime": "2026-08-01T10:00:00Z",
+    "end_datetime": "2026-08-01T11:30:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 14,
+  "fields": {
+    "name": "Сап-серфинг на Куршской косе",
+    "image": "events/main.jpeg",
+    "description": "Активный тур для любителей природы и спорта. Мы отправимся на спокойные воды Куршского залива, чтобы насладиться красотой национального парка с воды. Маршрут проходит вдоль песчаных дюн и сосновых лесов. В стоимость включены гидрокостюмы, спасжилеты и инструктаж.",
+    "short_description": "Прогулка на сап-бордах по живописному заливу национального парка",
+    "price": "2900.00",
+    "max_participants": 10,
+    "category": 6,
+    "location": "Куршская коса, визит-центр «Музейный комплекс»",
+    "start_datetime": "2026-09-17T08:00:00Z",
+    "end_datetime": "2026-09-17T12:00:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 15,
+  "fields": {
+    "name": "На остров лоцманов (теплоходная экскурсия)",
+    "image": "events/main_J3tVmpb.jpg",
+    "description": "Увлекательное путешествие на теплоходе на один из островов дельты Северной Двины. Вы посетите музей лоцманской славы, узнаете, как проводились суда по сложному фарватеру, и попробуете традиционную местную выпечку. Гид — потомственный лоцман.",
+    "short_description": "Поездка на теплоходе на остров и знакомство с историей лоцманско",
+    "price": "2400.00",
+    "max_participants": 20,
+    "category": 6,
+    "location": "Республика Карелия, база отдыха на р. Шуя (координаты для трансфера)",
+    "start_datetime": "2026-09-20T07:00:00Z",
+    "end_datetime": "2026-09-20T15:00:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 16,
+  "fields": {
+    "name": "Сплав «Лёгкий порог» (рафтинг)",
+    "image": "events/main_ruHmMuG.jpg",
+    "description": "Однодневный сплав по горной реке на рафтах под руководством опытных инструкторов. Маршрут подходит для новичков (уровень сложности 2-й категории): вас ждут небольшие шиверы и пороги, красивые пейзажи и обед на берегу у костра. Все необходимое снаряжение выдается на месте.",
+    "short_description": "Прохождение несложных порогов на рафтах и обед на природе.",
+    "price": "3800.00",
+    "max_participants": 15,
+    "category": 6,
+    "location": "Республика Карелия, база отдыха на р. Шуя (координаты для трансфера)",
+    "start_datetime": "2026-08-19T07:00:00Z",
+    "end_datetime": "2026-08-19T15:00:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 17,
+  "fields": {
+    "name": "Усадьба Кусково - жемчужина XVIII века",
+    "image": "events/main_QHcglwp.webp",
+    "description": "Приглашаем вас посетить уникальный памятник архитектуры XVIII века - усадьбу Кусково, бывшее имение графов Шереметевых. Вы прогуляетесь по регулярному французскому парку с мраморными скульптурами, посетите дворец, построенный в стиле раннего классицизма, увидите знаменитый Грот с его удивительными интерьерами из ракушек и туфа. Экскурсовод расскажет о пышных празднествах и приемах, которые устраивали здесь хозяева, о крепостном театре и о знаменитой истории любви графа Шереметева и крепостной актрисы Прасковьи Жемчуговой.",
+    "short_description": "Экскурсия по роскошной дворянской усадьбе",
+    "price": "5000.00",
+    "max_participants": 15,
+    "category": 5,
+    "location": "Москва, ул. Юности, 2 (ст. метро \"Новогиреево\", далее авт. 615, 247 до остановки \"Музей Кусково\")",
+    "start_datetime": "2026-10-08T08:00:00Z",
+    "end_datetime": "2026-10-08T11:30:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 18,
+  "fields": {
+    "name": "Абрамцево - творческое содружество",
+    "image": "events/433.jpg",
+    "description": "Абрамцево - одна из самых известных усадеб России, где творили великие художники и писатели. Вы увидите главный усадебный дом с подлинной обстановкой XIX века, мастерскую, где работали Васнецов, Репин, Поленов, Серов, и знаменитую церковь Спаса Нерукотворного, созданную по проекту Васнецова и Поленова. Экскурсия познакомит вас с историей усадьбы, владельцами - семьей Аксаковых и семьей Мамонтовых, а также с уникальной атмосферой творчества, царившей здесь более ста лет назад.",
+    "short_description": "Путешествие в знаменитую усадьбу",
+    "price": "4500.00",
+    "max_participants": 15,
+    "category": 5,
+    "location": "Московская обл., Сергиево-Посадский р-н, с. Абрамцево, ул. Музейная, 1",
+    "start_datetime": "2026-10-17T07:30:00Z",
+    "end_datetime": "2026-10-17T13:00:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 19,
+  "fields": {
+    "name": "Архангельское - подмосковный Версаль",
+    "image": "events/main.jpg",
+    "description": "Архангельское по праву называют \"подмосковным Версалем\". Это уникальный дворцово-парковый ансамбль конца XVIII - начала XIX века. Вас ждет знакомство с Большим дворцом князей Юсуповых, где сохранились подлинные интерьеры, богатейшая коллекция живописи, скульптуры и декоративно-прикладного искусства. Вы прогуляетесь по регулярному французскому парку с террасами, мраморными статуями и живописными видами на Москву-реку. Экскурсовод расскажет о богатейшей истории усадьбы, ее знаменитых владельцах и загадочной судьбе князей Юсуповых.",
+    "short_description": "Экскурсия в одну из самых красивых дворянских усадеб России",
+    "price": "3600.00",
+    "max_participants": 12,
+    "category": 5,
+    "location": "Московская обл., г.о. Красногорск, пос. Архангельское",
+    "start_datetime": "2026-10-19T09:00:00Z",
+    "end_datetime": "2026-10-19T13:30:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 20,
+  "fields": {
+    "name": "«Огни Столицы»: вечерняя обзорная экскурсия на автобусе",
+    "image": "events/main_Qt4TjGy.webp",
+    "description": "Вечером, в огнях подсветки, столица особенно романтична. Вы начнёте экскурсию со старинных памятников архитектуры и в неспешном ритме доедете до самых современных небоскрёбов Москва-Сити. Профессиональный гид обогатит ваши знания о Москве. Вы узнаете, как Москва стала одним из ярчайших городов мира. Примерный маршрут: Красная площадь, улица музеев Волхонка, Патриарший мост, Воробьёвы горы, смотровая площадка, Большой театр, Новый Арбат и многое другое!",
+    "short_description": "Вы отправитесь в незабываемое путешествие по вечерней Москве.",
+    "price": "1600.00",
+    "max_participants": 48,
+    "category": 3,
+    "location": "Москва, отель \"Метрополь\"",
+    "start_datetime": "2026-09-19T16:00:00Z",
+    "end_datetime": "2026-09-19T19:00:00Z"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 21,
+  "fields": {
+    "name": "Москва за 5 часов: Красная площадь и обзорная по центру",
+    "image": "events/main_EOBbgDc.webp",
+    "description": "Осмотрите главные достопримечательности города: Красную площадь, Воробьёвы горы, Софийскую набережную, легендарную Мосфильмовскую улицу и другие не менее значимые места. Профессиональный экскурсовод расскажет интересные детали из истории Москвы, поделится секретами местных жителей. Всего за 5 часов вы сможете познакомиться с Москвой и поймете, как устроен город.",
+    "short_description": "Красная площадь – особое место, которое хранит следы разных эпох",
+    "price": "2100.00",
+    "max_participants": 30,
+    "category": 3,
+    "location": "Москва, м. Китай-город",
+    "start_datetime": "2026-09-26T08:30:00Z",
+    "end_datetime": "2026-09-26T13:30:00Z"
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 2,
+  "fields": {
+    "event": 2,
+    "image": "events/gallery/1_qXB4FWm.webp",
+    "caption": null,
+    "is_main": true
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 3,
+  "fields": {
+    "event": 2,
+    "image": "events/gallery/2_fJ9sNMj.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 4,
+  "fields": {
+    "event": 2,
+    "image": "events/gallery/3_tUHHFkC.webp",
+    "caption": null,
+    "is_main": true
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 5,
+  "fields": {
+    "event": 10,
+    "image": "events/gallery/1_kDHIfYP.webp",
+    "caption": null,
+    "is_main": true
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 6,
+  "fields": {
+    "event": 10,
+    "image": "events/gallery/2_CuBQlSa.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 8,
+  "fields": {
+    "event": 4,
+    "image": "events/gallery/1_c2PmaKE.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 9,
+  "fields": {
+    "event": 4,
+    "image": "events/gallery/2_pwsjj0r.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 10,
+  "fields": {
+    "event": 4,
+    "image": "events/gallery/3_HgA72eN.webp",
+    "caption": null,
+    "is_main": true
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 11,
+  "fields": {
+    "event": 5,
+    "image": "events/gallery/Без_названия_1.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 12,
+  "fields": {
+    "event": 5,
+    "image": "events/gallery/Без_названия_2.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 13,
+  "fields": {
+    "event": 5,
+    "image": "events/gallery/Без_названия.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 14,
+  "fields": {
+    "event": 6,
+    "image": "events/gallery/Без_названия_1_wc4c1Yp.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 15,
+  "fields": {
+    "event": 6,
+    "image": "events/gallery/Без_названия_3.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 16,
+  "fields": {
+    "event": 6,
+    "image": "events/gallery/Без_названия_3THrygd.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 17,
+  "fields": {
+    "event": 7,
+    "image": "events/gallery/Без_названия_Eo7yqTW.webp",
+    "caption": null,
+    "is_main": true
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 18,
+  "fields": {
+    "event": 7,
+    "image": "events/gallery/Без_названия_2_YhnN6lB.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 19,
+  "fields": {
+    "event": 7,
+    "image": "events/gallery/Без_названия_1_qpVP7nX.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 20,
+  "fields": {
+    "event": 15,
+    "image": "events/gallery/Valaam_Infoflot00001.jpg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 21,
+  "fields": {
+    "event": 15,
+    "image": "events/gallery/IMG20211028141211-scaled.jpg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 22,
+  "fields": {
+    "event": 15,
+    "image": "events/gallery/10.jpg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 23,
+  "fields": {
+    "event": 14,
+    "image": "events/gallery/e7d3082f-6e7d-4695-a7f2-4aa589350a25.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 24,
+  "fields": {
+    "event": 14,
+    "image": "events/gallery/i.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 25,
+  "fields": {
+    "event": 14,
+    "image": "events/gallery/surfing_in_balticsea.jpg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 26,
+  "fields": {
+    "event": 14,
+    "image": "events/gallery/surfing_sunset_waves.jpg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 27,
+  "fields": {
+    "event": 16,
+    "image": "events/gallery/risk.jpg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 28,
+  "fields": {
+    "event": 16,
+    "image": "events/gallery/зацепились_за_камень.jpg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 29,
+  "fields": {
+    "event": 16,
+    "image": "events/gallery/3.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 30,
+  "fields": {
+    "event": 12,
+    "image": "events/gallery/1.webp",
+    "caption": null,
+    "is_main": true
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 31,
+  "fields": {
+    "event": 12,
+    "image": "events/gallery/2.jpg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 32,
+  "fields": {
+    "event": 12,
+    "image": "events/gallery/3_ZikVgEc.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 33,
+  "fields": {
+    "event": 11,
+    "image": "events/gallery/1_mIRMWtK.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 34,
+  "fields": {
+    "event": 11,
+    "image": "events/gallery/2.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 35,
+  "fields": {
+    "event": 11,
+    "image": "events/gallery/3_u5f82Dn.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 36,
+  "fields": {
+    "event": 13,
+    "image": "events/gallery/1_3ITSZbw.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 37,
+  "fields": {
+    "event": 13,
+    "image": "events/gallery/2_njDMF3Y.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 38,
+  "fields": {
+    "event": 13,
+    "image": "events/gallery/main.jpg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 39,
+  "fields": {
+    "event": 3,
+    "image": "events/gallery/1.jpeg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 40,
+  "fields": {
+    "event": 3,
+    "image": "events/gallery/2_9uMpsAb.jpg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 41,
+  "fields": {
+    "event": 3,
+    "image": "events/gallery/3.jpg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 42,
+  "fields": {
+    "event": 10,
+    "image": "events/gallery/3_qipTGMB.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 43,
+  "fields": {
+    "event": 10,
+    "image": "events/gallery/4.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 44,
+  "fields": {
+    "event": 9,
+    "image": "events/gallery/1_H7VVCLu.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 45,
+  "fields": {
+    "event": 9,
+    "image": "events/gallery/2_kBbKT0m.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 46,
+  "fields": {
+    "event": 9,
+    "image": "events/gallery/3_jVsE3GG.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 47,
+  "fields": {
+    "event": 8,
+    "image": "events/gallery/1.jpg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 48,
+  "fields": {
+    "event": 8,
+    "image": "events/gallery/2_xznN6Xz.jpg",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 49,
+  "fields": {
+    "event": 8,
+    "image": "events/gallery/3_aZg5ZKr.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 50,
+  "fields": {
+    "event": 20,
+    "image": "events/gallery/4_3QdAqAc.webp",
+    "caption": null,
+    "is_main": true
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 51,
+  "fields": {
+    "event": 20,
+    "image": "events/gallery/1_jm03HJo.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 52,
+  "fields": {
+    "event": 20,
+    "image": "events/gallery/2_fHSc7Og.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 53,
+  "fields": {
+    "event": 20,
+    "image": "events/gallery/3_16bAahF.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 54,
+  "fields": {
+    "event": 21,
+    "image": "events/gallery/5.webp",
+    "caption": null,
+    "is_main": true
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 55,
+  "fields": {
+    "event": 21,
+    "image": "events/gallery/4_JJG4csj.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 56,
+  "fields": {
+    "event": 21,
+    "image": "events/gallery/3_3lkoLPV.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 57,
+  "fields": {
+    "event": 21,
+    "image": "events/gallery/2_KiTprRT.webp",
+    "caption": null,
+    "is_main": false
+  }
+},
+{
+  "model": "events.eventimage",
+  "pk": 58,
+  "fields": {
+    "event": 21,
+    "image": "events/gallery/1_PJ7sQf7.webp",
+    "caption": null,
+    "is_main": false
+  }
+}
+]

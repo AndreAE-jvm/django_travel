@@ -1,0 +1,230 @@
+{% extends 'events/base.html' %}
+{% load static %}
+
+{% block title %}SmartTravel - Мой профиль{% endblock %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/profile_new.css' %}">
+<link rel="stylesheet" href="{% static 'css/base_new.css' %}">
+{% endblock %}
+
+{% block js %}
+<!-- Подключение IMask для маски телефона -->
+<script src="https://unpkg.com/imask"></script>
+
+<!-- Скрипт -->
+<script src="{% static 'js/profile.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container-wide mt-4">
+    <div class="row g-4">
+        <!-- Левая колонка - Редактирование профиля -->
+        <div class="col-xl-5 col-lg-6">
+            <div class="card">
+                <div class="card-header py-3 bg-custom-green">
+                    <h5 class="mb-0 text-white"><i class="bi bi-person-circle me-2"></i>Редактирование профиля</h5>
+                </div>
+
+
+                <!-- Блок информационных сообщений -->
+                {% if messages %}
+                <div class="px-4 pt-3">
+                    {% for message in messages %}
+                    {% if "Вы успешно вышли из системы" in message.message or "Данные успешно обновлены" in message.message or "Регистрация прошла успешно" in message.message %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show mb-0" role="alert">
+                        <i class="bi bi-{% if message.tags == 'success' %}check-circle{% else %}exclamation-triangle{% endif %} me-2"></i>
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="card-body p-4">
+                    <form method="post" action="{% url 'users:profile' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        {% if form.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+                            <i class="bi bi-exclamation-triangle me-2"></i>Пожалуйста, исправьте ошибки ниже:
+                            <ul class="mb-0 mt-2">
+                                {% for field in form %}
+                                {% for error in field.errors %}
+                                <li>{{ field.label }}: {{ error }}</li>
+                                {% endfor %}
+                                {% endfor %}
+                                {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endif %}
+
+                        <div class="row g-3">
+                            <!-- Скрытые поля для username и email (чтобы они передавались на сервер) -->
+                            <input type="hidden" name="username" value="{{ user.username }}">
+                            <input type="hidden" name="email" value="{{ user.email }}">
+
+                            <!-- Редактируемые поля: Имя и Фамилия -->
+                            <div class="col-md-6">
+                                <label for="{{ form.first_name.id_for_label }}" class="form-label fw-semibold">
+                                    <i class="bi bi-person me-1"></i>Имя
+                                </label>
+                                {{ form.first_name }}
+                                {% if form.first_name.errors %}
+                                <div class="text-danger small mt-1">{{ form.first_name.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="{{ form.last_name.id_for_label }}" class="form-label fw-semibold">
+                                    <i class="bi bi-person me-1"></i>Фамилия
+                                </label>
+                                {{ form.last_name }}
+                                {% if form.last_name.errors %}
+                                <div class="text-danger small mt-1">{{ form.last_name.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Отображение имени пользователя (только для просмотра) -->
+                            <div class="col-12">
+                                <label class="form-label fw-semibold">
+                                    <i class="bi bi-person-badge me-1"></i>Имя пользователя
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light">@</span>
+                                    <input type="text" class="form-control bg-light" value="{{ user.username }}"
+                                           readonly disabled>
+                                </div>
+                                <small class="form-text text-muted">Имя пользователя нельзя изменить</small>
+                            </div>
+
+                            <!-- Отображение email (только для просмотра) -->
+                            <div class="col-12">
+                                <label class="form-label fw-semibold">
+                                    <i class="bi bi-envelope me-1"></i>Email
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
+                                    <input type="email" class="form-control bg-light" value="{{ user.email }}" readonly
+                                           disabled>
+                                </div>
+                                <small class="form-text text-muted">Email нельзя изменить</small>
+                            </div>
+
+                            <!-- Телефон (редактируемый) -->
+                            <div class="col-12">
+                                <label for="{{ form.phone.id_for_label }}" class="form-label fw-semibold">
+                                    <i class="bi bi-telephone me-1"></i>Телефон
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                                    {{ form.phone }}
+                                </div>
+                                <small class="form-text text-muted">Необязательное поле</small>
+                                {% if form.phone.errors %}
+                                <div class="text-danger small mt-1">{{ form.phone.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Кнопки сохранения -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-between mt-4 pt-2 border-top">
+                            <a href="{% url 'index' %}" class="btn btn-outline-secondary px-4">
+                                <i class="bi bi-arrow-left me-1"></i>На главную
+                            </a>
+                            <button type="submit" class="btn btn-primary px-5">
+                                <i class="bi bi-check-circle me-1"></i>Сохранить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer bg-white py-3">
+                    <a href="{% url 'users:logout' %}" class="btn btn-outline-danger w-100">
+                        <i class="bi bi-box-arrow-right me-1"></i>Выйти из аккаунта
+                    </a>
+                </div>
+            </div>
+
+            <!-- Блок безопасности -->
+            <div class="card mt-4">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0"><i class="bi bi-shield-lock me-2 text-success"></i>Безопасность</h5>
+                </div>
+                <div class="card-body p-4">
+                    <p class="text-muted mb-3">Регулярно меняйте пароль для защиты вашего аккаунта от
+                        несанкционированного доступа.</p>
+                    <button class="btn btn-outline-secondary w-100 py-2"
+                            onclick="alert('Функция смены пароля будет доступна позже')">
+                        <i class="bi bi-key me-2"></i>Сменить пароль
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка - бронирование -->
+        <div class="col-xl-7 col-lg-6">
+            <div class="right-column-wrapper">
+                <div class="sticky-container">
+                    <!-- Блок с моими бронированиями -->
+                    <div class="card mt-4">
+                        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0"><i class="bi bi-ticket-perforated me-2 text-success"></i>Мои бронирования
+                            </h5>
+                            <a href="{% url 'events:my_registrations' %}" class="btn btn-sm btn-outline-success">
+                                Все бронирования
+                            </a>
+                        </div>
+                        <div class="card-body p-4">
+                            {% if registrations %}
+                            <div class="list-group list-group-flush">
+                                {% for registration in registrations %}
+                                <a href="{% url 'events:registration_detail' registration.id %}"
+                                   class="list-group-item list-group-item-action px-0 py-3 border-bottom">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">{{ registration.event.name }}</h6>
+                                            <small class="text-muted">
+                                                {{ registration.event_date|date:"d.m.Y" }} •
+                                                {{ registration.tickets_quantity }} бил. •
+                                                {{ registration.total_price }} ₽
+                                            </small>
+                                        </div>
+                                        <div>
+                                            {% if registration.status == 'confirmed' %}
+                                            <span class="badge bg-success">Подтверждено</span>
+                                            {% elif registration.status == 'pending' %}
+                                            <span class="badge bg-warning text-dark">Ожидает</span>
+                                            {% elif registration.status == 'cancelled' %}
+                                            <span class="badge bg-danger">Отменено</span>
+                                            {% elif registration.status == 'completed' %}
+                                            <span class="badge bg-info">Завершено</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </a>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            <div class="text-center py-4">
+                                <i class="bi bi-ticket" style="font-size: 3rem; color: #dee2e6;"></i>
+                                <p class="text-muted mt-2 mb-0">У вас пока нет бронирований</p>
+                                <a href="{% url 'events:index' %}" class="btn btn-success mt-3">
+                                    <i class="bi bi-search me-1"></i>Найти экскурсию
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

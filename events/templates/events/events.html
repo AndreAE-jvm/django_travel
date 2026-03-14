@@ -1,0 +1,169 @@
+{% extends 'events/base.html' %}
+{% load static %}
+
+{% block title %}SmartTravel - Каталог экскурсий{% endblock %}
+
+{% block css %}
+<!-- Стили -->
+<link rel="stylesheet" href="{% static 'css/base_new.css' %}">
+<link rel="stylesheet" href="{% static 'css/events_new.css' %}">
+{% endblock %}
+
+{% block js %}
+<!-- Скрипт -->
+<script src="{% static 'js/events.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+<main class="container py-4 mt-5">
+    <!-- Заголовок и категории -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="mb-3">Каталог экскурсий</h1>
+
+            <!-- Фильтр по категориям -->
+            <div class="mb-4" id="categoryFilter">
+                <h5 class="mb-3">Выберите направление:</h5>
+                <div class="d-flex flex-wrap gap-2">
+                    <!-- Кнопка "Все" -->
+                    <a href="{% url 'events:index' %}"
+                       class="btn {% if not category_id %}btn-primary{% else %}btn-outline-primary{% endif %} rounded-pill px-4">
+                        <i class="bi bi-grid-3x3-gap-fill me-2"></i>Все
+                    </a>
+
+                    <!-- Кнопки категорий -->
+                    {% for category in categories %}
+                    <a href="{% url 'events:category' category.id %}"
+                       class="btn {% if category_id == category.id %}btn-primary{% else %}btn-outline-primary{% endif %} rounded-pill px-4">
+                        {% if category.icon %}
+                        <i class="bi bi-{{ category.icon }} me-2"></i>
+                        {% endif %}
+                        {{ category.name }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Карточки экскурсий -->
+    <div class="row g-4" id="eventsContainer">
+        {% for event in events %}
+        <div class="col-lg-4 col-md-6 event-card-container" data-category="{{ event.category.id }}">
+            <div class="card event-card h-100" data-category="{{ event.category.id }}">
+                <div class="position-relative">
+                    <a href="{% url 'events:detail' event.id %}" class="text-decoration-none text-dark">
+                        <!-- Временно покажите что хранится в event.image -->
+                        <img src="/media/{{ event.image }}" class="card-img-top" alt="{{ event.name }}">
+                    </a>
+                </div>
+
+                <a href="{% url 'events:detail' event.id %}" class="text-decoration-none text-dark">
+                    <div class="card-body d-flex flex-column">
+                        <!-- Бейдж с названием категории -->
+                        <span class="badge bg-primary mb-2">{{ event.category }}</span>
+
+                        <!-- Название события -->
+                        <h5 class="card-title">{{ event.name }}</h5>
+
+                        <!-- Краткое описание -->
+                        <p class="card-text">{{ event.short_description }}</p>
+
+                        <!-- Полное описание -->
+                        <p class="card-text small text-muted">{{ event.description|truncatechars:100 }}</p>
+
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <!-- Цена -->
+                                <div>
+                                    <span class="h5 text-success mb-0">{{ event.price }} ₽</span>
+                                    <small class="text-muted d-block">за человека</small>
+                                </div>
+
+                                <!-- Максимальное количество участников -->
+                                <div class="text-end">
+                                    <div><i class="bi bi-people"></i> {{ event.max_participants }} мест</div>
+                                </div>
+                            </div>
+
+                            <!-- Длительность события -->
+                            <div class="mb-2">
+                                <i class="bi bi-clock"></i>
+                                {% if event.start_datetime and event.end_datetime %}
+                                {{ event.end_datetime|timeuntil:event.start_datetime }}
+                                {% else %}
+                                Продолжительность не указана
+                                {% endif %}
+                            </div>
+
+                            <!-- Локация -->
+                            <div class="mb-2">
+                                <i class="bi bi-geo-alt"></i>
+                                {% if event.location %}
+                                {{ event.location|truncatechars:30 }}
+                                {% else %}
+                                Локация не указана
+                                {% endif %}
+                            </div>
+
+                            <!-- Дата и время начала -->
+                            <div class="mb-1">
+                                <i class="bi bi-calendar-event"></i>
+                                {% if event.start_datetime %}
+                                {{ event.start_datetime|date:"d.m.Y H:i" }}
+                                {% else %}
+                                Дата не назначена
+                                {% endif %}
+                            </div>
+
+                            <!-- Дата и время окончания -->
+                            <div>
+                                <i class="bi bi-calendar-check"></i>
+                                {% if event.end_datetime %}
+                                {{ event.end_datetime|date:"d.m.Y H:i" }}
+                                {% else %}
+                                Дата окончания не указана
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <!-- Пагинация -->
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <!-- Кнопка "Назад" -->
+            <li class="page-item {% if not events.has_previous %} disabled {% endif %}">
+                <a class="page-link"
+                   href="{% if events.has_previous %} {% url 'events:page' events.previous_page_number %}?{{ request.GET.urlencode }} {% else %} # {% endif %}"
+                   tabindex="-1" aria-disabled="true">
+                    Назад
+                </a>
+            </li>
+
+            <!-- Номера страниц -->
+            {% for page_num in events.paginator.page_range %}
+            <li class="page-item {% if page_num == events.number %}active{% endif %}">
+                <a class="page-link" href="{% url 'events:page' page_num %}?{{ request.GET.urlencode }}">
+                    {{ page_num }}
+                </a>
+            </li>
+            {% endfor %}
+
+            <!-- Кнопка "Вперед" -->
+            <li class="page-item {% if not events.has_next %} disabled {% endif %}">
+                <a class="page-link"
+                   href="{% if events.has_next %} {% url 'events:page' events.next_page_number %}?{{ request.GET.urlencode }} {% else %} # {% endif %}">
+                    Вперед
+                </a>
+            </li>
+        </ul>
+    </nav>
+</main>
+{% endblock %}

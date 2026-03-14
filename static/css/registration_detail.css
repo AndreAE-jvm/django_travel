@@ -1,0 +1,59 @@
+:root {
+    --primary: #2a6e3f;
+    --primary-light: #4a9e5d;
+    --secondary: #b86f3c;
+}
+
+/* Хлебные крошки */
+.breadcrumb a {
+    color: var(--primary) !important;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-light) !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--primary) !important;
+}
+
+/* Зеленые заголовки */
+.card .text-primary,
+.card .text-success,
+.card .text-info {
+    color: var(--primary) !important;
+}
+
+/* Иконки */
+.card .bi-clock-fill.text-primary,
+.card .bi-people-fill.text-success {
+    color: var(--primary) !important;
+}
+
+.card .bi-geo-alt-fill.text-danger {
+    color: var(--secondary) !important;
+}
+
+/* Блок оплаты */
+.card.border-primary {
+    border-color: var(--primary) !important;
+}
+
+.card.border-primary .card-header.bg-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%) !important;
+}
+
+.card.border-primary .rounded-circle i {
+    color: var(--primary) !important;
+}
+
+/* Условия возврата */
+.alert.alert-info {
+    background-color: rgba(42, 110, 63, 0.1) !important;
+    border-color: var(--primary) !important;
+}
+
+.alert.alert-info i {
+    color: var(--primary) !important;
+}

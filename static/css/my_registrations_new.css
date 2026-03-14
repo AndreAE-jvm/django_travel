@@ -1,0 +1,98 @@
+.btn-group .btn {
+    border-radius: 50px !important;
+    padding: 0.5rem 1.2rem !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    min-width: 120px;
+}
+
+.btn-group .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+.btn-group .btn.active {
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+
+.btn-group .btn-outline-primary.active,
+.btn-group .btn-outline-primary:hover {
+    background-color: #2a6e3f !important;
+    border-color: #2a6e3f !important;
+}
+
+.btn-group .btn-outline-warning.active,
+.btn-group .btn-outline-warning:hover {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.btn-group .btn-outline-success.active,
+.btn-group .btn-outline-success:hover {
+    background-color: #198754 !important;
+    border-color: #198754 !important;
+    color: white !important;
+}
+
+.btn-group .btn-outline-info.active,
+.btn-group .btn-outline-info:hover {
+    background-color: #0dcaf0 !important;
+    border-color: #0dcaf0 !important;
+    color: #212529 !important;
+}
+
+.btn-group .btn-outline-danger.active,
+.btn-group .btn-outline-danger:hover {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: white !important;
+}
+
+
+@media (max-width: 768px) {
+    .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .btn-group .btn {
+        min-width: calc(50% - 0.25rem);
+        flex: 1 1 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-group .btn {
+        min-width: 100%;
+    }
+}
+
+
+.btn-outline-secondary {
+    border-radius: 50px !important;
+    padding: 0.25rem 0.75rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-outline-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
+    background-color: #6c757d !important;
+    color: white !important;
+    border-color: #6c757d !important;
+}
+
+.btn-outline-secondary i {
+    margin-right: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .btn-outline-secondary {
+        padding: 0.25rem 0.5rem !important;
+    }
+}

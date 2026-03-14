@@ -1,0 +1,405 @@
+/* index.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@800;900&display=swap');
+
+
+body {
+    background-color: #fff9f0;
+}
+
+/* Общие стили для всех заголовков секций */
+#features h2.display-6,
+#how-it-works h2.display-6,
+#testimonials h2.display-6 {
+    font-family: 'Raleway', sans-serif !important;
+    font-size: 3.5rem !important;
+    font-weight: 700;
+    color: #5D3A1A !important;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Заголовок популярных экскурсий */
+#popular h2.display-6 {
+    font-family: 'Raleway', sans-serif !important;
+    font-size: 3.5rem !important;
+    font-weight: 700;
+    color: #5D3A1A !important;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+/* для заголовка с двумя строками */
+#features h2.display-6 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.2rem !important;
+}
+
+/* Общие стили для подзаголовков и текста */
+#features .text-muted,
+#testimonials .text-muted,
+#how-it-works p.text-muted,
+.hero-section .lead {
+    color: #333333 !important;
+    font-weight: 700 !important;
+}
+
+/* Главная секция */
+.hero-section {
+    padding: 8rem 0 6rem;
+}
+
+.hero-section h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: 4.2rem;
+    color: #5D3A1A;
+    animation: floatText 6s ease-in-out infinite;
+    padding: 1.5rem 0;
+    position: relative;
+}
+
+/* Кнопки */
+#start-purchase-btn,
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 3rem;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    transition: all 0.4s;
+}
+
+/* Карточки */
+#features .card,
+#testimonials .card {
+    border: none !important;
+    box-shadow: none !important;
+    background: rgba(26,21,13,0.15) !important;
+    backdrop-filter: blur(3px);
+    color: #5D3A1A;
+    transition: all 0.4s;
+}
+
+#features .card:hover i { color: #e8b794; }
+
+#how-it-works .rounded-circle {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Цвет для заголовков шагов в секции "Как это работает" */
+#how-it-works h5 {
+    color: #5D3A1A !important;
+    font-weight: 700;
+}
+
+/* Отзывы */
+#testimonials .card .fst-italic,
+#testimonials .card h6,
+#testimonials .card small.text-muted {
+    color: #333333 !important;
+}
+
+#testimonials .card .text-warning { color: #ffb347 !important; }
+
+/* Бейджи */
+.badge.bg-primary.bg-opacity-10 {
+    background: rgba(184,111,60,0.2) !important;
+    color: #e8b794 !important;
+    border: 1px solid rgba(184,111,60,0.3);
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .hero-section h1,
+    #features h2.display-6,
+    #how-it-works h2.display-6,
+    #testimonials h2.display-6 { font-size: 3rem; }
+
+    #how-it-works h5 { font-size: 1.6rem; }
+}
+
+@media (max-width: 768px) {
+    .hero-section h1,
+    #features h2.display-6,
+    #how-it-works h2.display-6,
+    #testimonials h2.display-6 { font-size: 2.5rem; }
+
+    #how-it-works h5 { font-size: 1.4rem; }
+}
+
+@media (max-width: 576px) {
+    .hero-section h1,
+    #features h2.display-6,
+    #how-it-works h2.display-6,
+    #testimonials h2.display-6 { font-size: 2.1rem; }
+
+    #how-it-works h5 { font-size: 1.2rem; }
+}
+
+/* ===== СТИЛИ ДЛЯ ФОРМЫ ПОИСКА ===== */
+
+:root {
+    --success-green: #28a745;
+    --text-dark: #333333;
+    --border-light: #e0e0e0;
+    --placeholder-color: #999999;
+    --brown-color: #8B4513;
+    --white: #ffffff;
+    --gray-light: #f5f5f5;
+    --gray-icon: #f0f0f0;
+}
+
+/* Основной контейнер поиска */
+.search-form {
+    background: var(--white);
+    border-radius: 70px;
+    padding: 8px 8px 8px 20px;
+    margin: 3rem auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 1000px;
+    border: 1px solid var(--border-light);
+}
+
+/* Вкладки */
+.search-form__tabs {
+    padding-right: 15px;
+    border-right: 2px solid var(--border-light);
+}
+
+.search-form__tab {
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--brown-color);
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-form__tab svg {
+    width: 18px;
+    height: 18px;
+    color: var(--brown-color);
+}
+
+.search-form__tab--active {
+    background: var(--gray-light);
+    color: var(--brown-color);
+}
+
+.search-form__tab--active svg {
+    color: var(--brown-color);
+}
+
+/* Колонки поиска */
+.search-form__col {
+    flex: 1;
+    min-width: 200px;
+    padding: 0 15px;
+}
+
+/* Поля ввода */
+.search-form-field__input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    padding: 14px 0;
+    background: transparent;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.search-form-field__input::placeholder {
+    color: var(--placeholder-color);
+    font-weight: 400;
+}
+
+/* Кнопка поиска */
+.search-form__button-col {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.search-form__button {
+    background: var(--white);
+    border: 2px solid var(--success-green);
+    border-radius: 60px;
+    padding: 10px 32px;
+    color: var(--success-green);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 1;
+    height: 52px;
+}
+
+.search-form__button:hover {
+    background: var(--success-green);
+    border-color: var(--success-green);
+    color: var(--white);
+}
+
+.search-form__button:hover .search-form__button-icon {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Иконка кнопки */
+.search-form__button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gray-icon);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+}
+
+.search-form__button-icon i {
+    font-size: 16px;
+    color: var(--success-green);
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-form__button:hover .search-form__button-icon i {
+    color: var(--white);
+}
+
+/* Контейнеры для выравнивания */
+.as-button__body,
+.as-button__prepend {
+    display: flex;
+    align-items: center;
+}
+
+.as-button__body {
+    gap: 8px;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .search-form {
+        flex-direction: column;
+        border-radius: 30px;
+        padding: 16px;
+    }
+
+    .search-form__tabs {
+        border-right: none;
+        border-bottom: 2px solid var(--border-light);
+        width: 100%;
+        padding: 0 0 8px;
+        margin-bottom: 8px;
+    }
+
+    .search-form__col,
+    .search-form__button-col {
+        width: 100%;
+    }
+
+    .search-form__col {
+        padding: 8px 0;
+    }
+
+    .search-form__button-col {
+        margin-top: 8px;
+    }
+
+    .search-form__button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .search-form__tab {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .search-form__button {
+        padding: 10px 24px;
+        font-size: 15px;
+    }
+}
+/* Стили для календаря flatpickr */
+.flatpickr-calendar {
+    font-family: 'Raleway', sans-serif;
+    border-radius: 15px;
+    border: 1px solid var(--border-light);
+    margin-top: 10px;
+}
+
+.flatpickr-months {
+    background: linear-gradient(135deg, var(--brown-color) 0%, #a0522d 100%);
+    border-radius: 15px 15px 0 0;
+    padding: 8px 0;
+}
+
+.flatpickr-month,
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-current-month input.cur-year,
+.flatpickr-prev-month,
+.flatpickr-next-month {
+    color: white !important;
+}
+
+.flatpickr-weekday {
+    color: var(--brown-color) !important;
+    font-weight: 600;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+    background: var(--success-green);
+    border-color: var(--success-green);
+}
+
+.flatpickr-day.inRange {
+    background: rgba(40, 167, 69, 0.1);
+}
+
+.flatpickr-day.today {
+    border-color: var(--brown-color);
+}
+
+.flatpickr-day.today:hover,
+.flatpickr-day:hover {
+    background: rgba(139, 69, 19, 0.1);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .flatpickr-calendar {
+        width: 100% !important;
+        max-width: 400px;
+    }
+}
