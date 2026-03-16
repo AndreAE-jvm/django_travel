@@ -17,19 +17,9 @@ body {
     color: #5D3A1A !important;
     text-align: center;
     position: relative;
-    padding-bottom: 10px;
-}
+    padding-bottom: 10px;}
 
-/* Заголовок популярных экскурсий */
-#popular h2.display-6 {
-    font-family: 'Raleway', sans-serif !important;
-    font-size: 3.5rem !important;
-    font-weight: 700;
-    color: #5D3A1A !important;
-    text-align: center;
-    position: relative;
-    padding-bottom: 10px;
-}
+
 /* для заголовка с двумя строками */
 #features h2.display-6 {
     display: flex !important;
