@@ -1,77 +1,64 @@
 from django.contrib import auth, messages
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from users.forms import UserLoginForm, UserRegisterForm, UserProfileForm
-from django.urls import reverse
-from django.contrib.auth.decorators import login_required  # неавторизованные пользователи не могут зайти (перенаправление на войти)
-from events.models import EventRegistration # Импортируем новые модели
+from django.contrib.auth.decorators import login_required
+from events.models import EventRegistration
 
 
 def login(request):
     if request.method == 'POST':
         form = UserLoginForm(data=request.POST)
         if form.is_valid():
-            username = request.POST['username']
-            password = request.POST['password']
-            # username = form.cleaned_data['username']  # Берем из очищенных данных
-            # password = form.cleaned_data['password']
-            user = auth.authenticate(username=username, password=password)
-            if user and user.is_active:
+            user = auth.authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password']
+            )
+            if user:
                 auth.login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                messages.success(request, 'Добро пожаловать!')
+                return redirect('index')
     else:
         form = UserLoginForm()
 
-    context = {'form': form}
-    return render(request, 'users/login.html', context)
+    return render(request, 'users/login.html', {'form': form})
 
 
 def register(request):
     if request.method == 'POST':
-        form = UserRegisterForm(data=request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Регистрация прошла успешно! Теперь Вы можете войти.')
-            return HttpResponseRedirect(reverse('users:login'))
-        else:
-            print(form.errors)
+            messages.success(request, 'Регистрация успешна! Войдите в аккаунт.')
+            return redirect('users:login')
     else:
         form = UserRegisterForm()
 
-    context = {
-        'form': form
-    }
-
-    return render(request, 'users/register.html', context)
+    return render(request, 'users/register.html', {'form': form})
 
 
 def logout(request):
     auth.logout(request)
-    messages.success(request, 'Вы успешно вышли из системы. Возвращайтесь снова!')
-    return HttpResponseRedirect(reverse('index'))
+    messages.success(request, 'Вы вышли из системы')
+    return redirect('index')
 
 
-@login_required(login_url='/users/login/')
+@login_required
 def profile(request):
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, instance=request.user, files=request.FILES)
+        form = UserProfileForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Данные успешно обновлены!')
-            return HttpResponseRedirect(reverse('users:profile'))
-        else:
-            messages.error(request, 'Пожалуйста, исправьте ошибки в форме')
+            messages.success(request, 'Профиль обновлен')
+            return redirect('users:profile')
     else:
         form = UserProfileForm(instance=request.user)
 
-    # Получаем последние 10 бронирований
+    # Последние 5 бронирований
     registrations = EventRegistration.objects.filter(
         user=request.user
-    ).select_related('event').order_by('-registration_timestamp')[:10]
+    ).select_related('event').order_by('-registration_timestamp')[:5]
 
-
-
-    context = {
+    return render(request, 'users/profile.html', {
         'form': form,
-        'registrations': registrations,
-    }
-    return render(request, 'users/profile.html', context)
+        'registrations': registrations
+    })

@@ -15,7 +15,7 @@ class Event(models.Model):
     description = models.TextField(blank=True)
     short_description = models.TextField(max_length=64,blank=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    max_participants = models.PositiveIntegerField(default=15) # Максимальное количество участников #
+    max_participants = models.PositiveIntegerField(default=15) # В админке поле автоматически заполнится числом 15, если поле пустое
     category = models.ForeignKey(EventCategory, on_delete=models.PROTECT) #CASCADE = Удалил категорию → удалились ВСЕ её события;
     # PROTECT = Не даст удалить категорию, пока есть её события #
     location = models.CharField(max_length=200, blank=True)

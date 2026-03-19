@@ -266,18 +266,16 @@
     }
 }
 
-/* Центрирование превью аватара */
-.avatar-preview {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
+/* Стили для бронирований в профиле */
+.card-body a .border-bottom strong {
+    color: #000000 !important;
+    font-weight: 600;
 }
 
-.avatar-preview img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid var(--primary-green);
-    box-shadow: var(--shadow-md);
+.card-body a {
+    text-decoration: none;
+}
+
+.card-body a .border-bottom small {
+    color: #6c757d;
 }

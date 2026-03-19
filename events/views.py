@@ -31,7 +31,7 @@ def events(request, category_id=None, page=1):
     # получаем параметры из GET-запроса
     search_query = request.GET.get('search', '')
 
-    # Получаем даты из скрытых полей
+    # Получаем даты из скрытых полей для календаря
     date_from = request.GET.get('date_from', '')
     date_to = request.GET.get('date_to', '')
 
