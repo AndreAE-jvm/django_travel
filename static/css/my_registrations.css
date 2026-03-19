@@ -1,9 +1,16 @@
+.btn-group {
+    display: flex;
+    gap: 0.5rem; /* Добавляет отступ между кнопками */
+    flex-wrap: wrap;
+}
+
 .btn-group .btn {
     border-radius: 50px !important;
     padding: 0.5rem 1.2rem !important;
     font-weight: 500 !important;
     transition: all 0.3s ease !important;
     min-width: 120px;
+    margin: 0; /* Убираем стандартные отступы */
 }
 
 .btn-group .btn:hover {
@@ -16,7 +23,6 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
 }
-
 
 .btn-group .btn-outline-primary.active,
 .btn-group .btn-outline-primary:hover {
@@ -52,11 +58,8 @@
     color: white !important;
 }
 
-
 @media (max-width: 768px) {
     .btn-group {
-        display: flex;
-        flex-wrap: wrap;
         gap: 0.5rem;
     }
 
@@ -71,7 +74,6 @@
         min-width: 100%;
     }
 }
-
 
 .btn-outline-secondary {
     border-radius: 50px !important;
