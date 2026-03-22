@@ -10,8 +10,8 @@ def login(request):
         form = UserLoginForm(data=request.POST)
         if form.is_valid():
             user = auth.authenticate(
-                username=form.cleaned_data['username'],
-                password=form.cleaned_data['password']
+                username = request.POST['username'],
+                password = request.POST['password']
             )
             if user:
                 auth.login(request, user)

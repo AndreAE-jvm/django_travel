@@ -84,7 +84,7 @@ def event_detail(request, event_id):
     # Свободные места
     registered = EventRegistration.objects.filter(
         event=event, event_date=event.start_datetime.date(),
-        status__in=['pending', 'confirmed']
+        status__in=['pending', 'confirmed'] # Учитываются только активные брони
     ).aggregate(total=Sum('tickets_quantity'))['total'] or 0
 
     event.available_spots = event.max_participants - registered
